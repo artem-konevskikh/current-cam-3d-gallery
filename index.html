@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="main.css">
+  <title>VR: So simple even the Marketing team can use it.</title>
+  <meta name="description" content="Now in 3D!">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.6.0/aframe-master.min.js"></script>
+  <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+
+</head>
+<body>
+
+  <a-scene fog="type: linear; color: #000; far: 16; near: 7">
+
+    <!-- Splash Screen -->
+    <div class="splash">
+      <div class="splash__card">
+        <h1>Welcome to Current.cam Gallery</h1>
+        <p>You can move around with WASD keys (desktop), by tapping the screen (mobile) or with the button on your Google Cardboard.</p>
+        <img class="splash__img" src="assets/current_logo.png" alt="whoa" />
+        <button class="splash__button">Enter</button>
+      </div>
+    </div>
+
+    <!-- Load Assets -->
+    <a-assets>
+      <!-- global -->
+      <img id="floor" src="img/other/floor.jpg">
+      <img id="wall" src="img/other/wall-concrete.jpg">
+      <img id="wall-secret" src="img/other/wall-concrete-secret.jpg">
+      <img id="wall-brick" src="img/other/brick.jpg">
+
+
+      <!-- Entrance room-->
+      <img id="room1-t1" src="assets/current_logo.png">
+      <img id="room1-t2" src="assets/current_logo.png">
+
+      <!-- Video Room 1-->
+      <video id="current-research" autoplay loop="true" webkit-playsinline playsinline src="assets/room-video-1/video1.mp4"></video>
+
+      <!-- Video Room 2-->
+      <video id="current-film" autoplay loop="true" webkit-playsinline playsinline src="assets/room-video-2/video2.mp4"></video>
+      <a-asset-item id="couch-obj" src="img/theater/couch/model.obj"></a-asset-item>
+      <a-asset-item id="couch-mtl" src="img/theater/couch/materials.mtl"></a-asset-item>
+
+      <!-- Video Room 3-->
+      <video id="gan-video" autoplay loop="true" webkit-playsinline playsinline src="assets/room-video-1/video1.mp4"></video>
+
+      <!-- Secret Room Left -->
+      <a-asset-item id="bear-obj" src="assets/secret-left/BEAR-only-obj_clean_tex.obj"></a-asset-item>
+      <a-asset-item id="bear-mtl" src="assets/secret-left/BEAR-only-obj_clean_tex.mtl"></a-asset-item>
+
+
+    </a-assets>
+
+    <!-- User / Camera -->
+    <a-entity
+      id="player"
+      camera="user-height: 1.5"
+      universal-controls
+      kinematic-body
+      listener
+      position: "0 9 0"
+    ></a-entity>
+
+
+    <!-- Entrance room -->
+    <a-entity position="-1.5 1.5 19.5" rotation="0 0 0">
+      <!--left wall -->
+      <a-entity rotation= "0 90 0">
+        <a-image position="1.4 2 -4.4" src="#room1-t1" height="5" width="5"></a-image>
+      </a-entity>
+      <!--right wall -->
+      <a-entity rotation= "0 -90 0">
+        <a-image position="-1.4 2 -4.4" src="#room1-t2" height="5" width="5"></a-image>
+      </a-entity>
+    </a-entity>
+
+    <!-- Left Corridor Entrance -->
+    <a-entity position="-23 1.5 5.5" rotation="0 0 0">
+      <a-image position="0 2.5 3.45" rotation="0 -180 0" src="#room1-t1" width="5" height="5"></a-image>
+    </a-entity>
+
+    <!-- Video Room 1 -->
+    <a-entity position="-21 1.5 -22.5">
+      <!-- Back wall -->
+      <a-video src="#current-research" width="10.667" height="6" position="0 2.3 -4.4"></a-video>
+      <!-- objects -->
+      <a-entity obj-model="obj: #couch-obj; mtl: #couch-mtl" position ="0 -1 1" rotation="0 0 0" scale="2 2 2"></a-entity>
+      <!-- ceiling -->
+      <a-plane position="0 6 0" rotation="90 0 0" height="9" width="9" color="black"></a-plane>
+    </a-entity>
+
+    <!-- Main Room -->
+    <a-entity position="-1.5 1.5 0" rotation="0 0 0">
+      <!-- Main Room First Left-->
+      <a-entity position="-15 1.5 5" rotation="0 0 0">
+        <a-image position="7.5 1 6.9" rotation="0 -180 0" src="#room1-t1" width="8.85" height="5"></a-image>
+        <a-image position="3 1 -4.95" rotation="0 0 0" src="#room1-t1" width="5" height="5"></a-image>
+      </a-entity>
+       <!-- Main Room First Right-->
+      <a-entity position="9 1.5 5" rotation="0 0 0">
+        <a-image position="-1.5 1 6.9" rotation="0 -180 0" src="#room1-t1" width="8.85" height="5"></a-image>
+        <a-image position="3 1 -4.95" rotation="0 0 0" src="#room1-t1" width="5" height="5"></a-image>
+      </a-entity>
+      <!-- Main Room Second Left-->
+      <a-entity position="-11 1.5 -8" rotation="0 0 0">
+        <a-image position="-1 1 4.95" rotation="0 -180 0" src="#room1-t1" width="5" height="5"></a-image>
+      </a-entity>
+       <!-- Main Room Second Right-->
+      <a-entity position="11 1.5 -8" rotation="0 0 0">
+        <a-image position="1 1 4.95" rotation="0 -180 0" src="#room1-t1" width="5" height="5"></a-image>
+      </a-entity>
+    </a-entity>
+
+    <!-- Video Room 2 -->
+    <a-entity position="-1.5 1.5 -22.5">
+      <!-- Back wall -->
+      <a-video src="#current-film" width="10.667" height="6" position="0 2.3 -4.4"></a-video>
+      <!-- objects -->
+      <a-entity obj-model="obj: #couch-obj; mtl: #couch-mtl" position ="0 -1 1" rotation="0 0 0" scale="2 2 2"></a-entity>
+      <!-- ceiling -->
+      <a-plane position="0 6 0" rotation="90 0 0" height="9" width="9" color="black"></a-plane>
+    </a-entity>
+
+
+    <!-- Right Corridor Entrance -->
+    <a-entity position="20 1.5 5.5" rotation="0 0 0">
+      <a-image position="0 2.5 3.45" rotation="0 -180 0" src="#room1-t1" width="5" height="5"></a-image>
+    </a-entity>
+
+
+    <!-- Video Room 3 -->
+    <a-entity position="18 1.5 -22.5">
+      <!-- Back wall -->
+      <a-video src="#gan-video" width="10.667" height="6" position="0 2.3 -4.4"></a-video>
+      <!-- objects -->
+      <a-entity obj-model="obj: #couch-obj; mtl: #couch-mtl" position ="0 -1 1" rotation="0 0 0" scale="2 2 2"></a-entity>
+      <!-- ceiling -->
+      <a-plane position="0 6 0" rotation="90 0 0" height="9" width="9" color="black"></a-plane>
+    </a-entity>
+
+    <!-- Secret Room Left-->
+    <a-entity position="-22.5 0 19.5" rotation="0 0 0">
+      <a-entity
+              obj-model="obj: #bear-obj; mtl: #bear-mtl"
+              rotation="0 -110 0"
+              scale="0.2 0.2 0.2"
+              position="0 0 0"
+      ></a-entity>
+
+    </a-entity>
+
+    <!-- Secret Room Right-->
+    <a-entity position="20 0 19.5" rotation="0 0 0">
+      <a-entity
+              obj-model="obj: #bear-obj; mtl: #bear-mtl"
+              rotation="0 110 0"
+              scale="0.2 0.2 0.2"
+              position="0 0 0"
+      ></a-entity>
+    </a-entity>
+
+
+    <!-- Ground -->
+    <a-grid id="ground" static-body material="src: #floor; repeat: 15 15" rotation="0 -90 0"></a-grid>
+
+    <!-- Walls (used by map.js -->)
+    <a-entity id="walls"></a-entity>
+
+
+    <!-- Sky -->
+    <a-sky id="sky" color="#0000ff"></a-sky>
+
+  </a-scene>
+
+  <script src="js/map.js"></script>
+  <script src="js/video.js"></script>
+
+</body>
+</html>
