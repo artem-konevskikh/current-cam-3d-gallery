@@ -1,7 +1,7 @@
 {
-  "name": "tlni-vr",
-  "description": "TL&I. Now in 3D",
-  "version": "0.3.0",
+  "name": "Current",
+  "description": "Current.cam 3d Gallery",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "start": "budo js/walls.js --live --verbose --port 3000 --open",
