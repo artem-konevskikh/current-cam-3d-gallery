@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <link rel="stylesheet" href="main.css">
-  <title>VR: So simple even the Marketing team can use it.</title>
-  <meta name="description" content="Now in 3D!">
+  <title>Current</title>
+  <meta name="description" content="Current.cam Gallery">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.6.0/aframe-master.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/0.6.1/aframe-master.min.js"></script>
   <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.8.6/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-text-geometry-component@^0.5.0/dist/aframe-text-geometry-component.min.js"></script>
 
 </head>
 <body>
@@ -19,10 +20,11 @@
     <!-- Splash Screen -->
     <div class="splash">
       <div class="splash__card">
-        <h1>Welcome to Current.cam Gallery</h1>
+        <h1>Welcome to Current</h1>
         <p>You can move around with WASD keys (desktop), by tapping the screen (mobile) or with the button on your Google Cardboard.</p>
         <img class="splash__img" src="assets/current_logo.png" alt="whoa" />
         <button class="splash__button">Enter</button>
+
       </div>
     </div>
 
@@ -34,10 +36,20 @@
       <img id="wall-secret" src="img/other/wall-concrete-secret.jpg">
       <img id="wall-brick" src="img/other/brick.jpg">
 
-
+      <img id="placeholder" src="assets/current_logo.png">
       <!-- Entrance room-->
-      <img id="room1-t1" src="assets/current_logo.png">
-      <img id="room1-t2" src="assets/current_logo.png">
+      <img id="room1-t1" src="assets/entrance/text1.png">
+      <img id="room1-t2" src="assets/entrance/text2.png">
+
+      <!-- Main room-->
+      <img id="room2-t3" src="assets/main-room/text3.png">
+      <img id="room2-t4" src="assets/main-room/text4.png">
+      <img id="room2-t5" src="assets/main-room/text5.png">
+      <img id="room2-t6" src="assets/main-room/text6.png">
+      <img id="room2-t7" src="assets/main-room/text7.png">
+
+      <img id="corridor-left-t8" src="assets/main-room/text8.png">
+      <img id="corridor-right-t9" src="assets/main-room/text9.png">
 
       <!-- Video Room 1-->
       <video id="current-research" autoplay loop="true" webkit-playsinline playsinline src="assets/room-video-1/video1.mp4"></video>
@@ -64,7 +76,7 @@
       universal-controls
       kinematic-body
       listener
-      position: "0 9 0"
+      position="0 9 0"
     ></a-entity>
 
 
@@ -82,7 +94,7 @@
 
     <!-- Left Corridor Entrance -->
     <a-entity position="-23 1.5 5.5" rotation="0 0 0">
-      <a-image position="0 2.5 3.45" rotation="0 -180 0" src="#room1-t1" width="5" height="5"></a-image>
+      <a-image position="0 2.5 3.45" rotation="0 -180 0" src="#corridor-left-t8" width="5" height="5"></a-image>
     </a-entity>
 
     <!-- Video Room 1 -->
@@ -99,21 +111,21 @@
     <a-entity position="-1.5 1.5 0" rotation="0 0 0">
       <!-- Main Room First Left-->
       <a-entity position="-15 1.5 5" rotation="0 0 0">
-        <a-image position="7.5 1 6.9" rotation="0 -180 0" src="#room1-t1" width="8.85" height="5"></a-image>
-        <a-image position="3 1 -4.95" rotation="0 0 0" src="#room1-t1" width="5" height="5"></a-image>
+        <a-image position="7.5 1 6.9" rotation="0 -180 0" src="#room2-t3" width="5" height="5"></a-image>
+        <a-image position="3 1 -4.95" rotation="0 0 0" src="#room2-t4" width="5" height="5"></a-image>
       </a-entity>
        <!-- Main Room First Right-->
       <a-entity position="9 1.5 5" rotation="0 0 0">
-        <a-image position="-1.5 1 6.9" rotation="0 -180 0" src="#room1-t1" width="8.85" height="5"></a-image>
-        <a-image position="3 1 -4.95" rotation="0 0 0" src="#room1-t1" width="5" height="5"></a-image>
+        <a-image position="-1.5 1 6.9" rotation="0 -180 0" src="#placeholder" width="8.85" height="5"></a-image>
+        <a-image position="3 1 -4.95" rotation="0 0 0" src="#room2-t6" width="5" height="5"></a-image>
       </a-entity>
       <!-- Main Room Second Left-->
       <a-entity position="-11 1.5 -8" rotation="0 0 0">
-        <a-image position="-1 1 4.95" rotation="0 -180 0" src="#room1-t1" width="5" height="5"></a-image>
+        <a-image position="-1 1 4.95" rotation="0 -180 0" src="#room2-t5" width="5" height="5"></a-image>
       </a-entity>
        <!-- Main Room Second Right-->
       <a-entity position="11 1.5 -8" rotation="0 0 0">
-        <a-image position="1 1 4.95" rotation="0 -180 0" src="#room1-t1" width="5" height="5"></a-image>
+        <a-image position="1 1 4.95" rotation="0 -180 0" src="#room2-t7" width="5" height="5"></a-image>
       </a-entity>
     </a-entity>
 
@@ -130,7 +142,7 @@
 
     <!-- Right Corridor Entrance -->
     <a-entity position="20 1.5 5.5" rotation="0 0 0">
-      <a-image position="0 2.5 3.45" rotation="0 -180 0" src="#room1-t1" width="5" height="5"></a-image>
+      <a-image position="0 2.5 3.45" rotation="0 -180 0" src="#corridor-right-t9" width="5" height="5"></a-image>
     </a-entity>
 
 
@@ -163,6 +175,7 @@
               scale="0.2 0.2 0.2"
               position="0 0 0"
       ></a-entity>
+      <a-entity text-geometry="value: What's up"></a-entity>
     </a-entity>
 
 
